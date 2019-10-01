@@ -36,7 +36,10 @@
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
-    <Resource driverClassName="com.mysql.jdbc.Driver" name="jdbc/contactosds" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/agenda" username="root"/>
+    
+    <Resource driverClassName="com.mysql.jdbc.Driver" name="jdbc/contactosds" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/agenda2" username="root"/>
+    <Resource driverClassName="com.mysql.jdbc.Driver" name="jdbc/librosds" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/libros" username="root"/>
+  		
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
   </GlobalNamingResources>
 
@@ -150,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="15_contactos_mvc2" path="/15_contactos_mvc2" reloadable="true" source="org.eclipse.jst.jee.server:15_contactos_mvc2"/><Context docBase="16_contactos_datasource" path="/16_contactos_datasource" reloadable="true" source="org.eclipse.jst.jee.server:16_contactos_datasource"/><Context docBase="18_contactos_jsp" path="/18_contactos_jsp" reloadable="true" source="org.eclipse.jst.jee.server:18_contactos_jsp"/></Host>
+      <Context docBase="18_contactos_jsp" path="/18_contactos_jsp" reloadable="true" source="org.eclipse.jst.jee.server:18_contactos_jsp"/><Context docBase="17_contactos_factory" path="/17_contactos_factory" reloadable="true" source="org.eclipse.jst.jee.server:17_contactos_factory"/><Context docBase="19_libreria_mvc" path="/19_libreria_mvc" reloadable="true" source="org.eclipse.jst.jee.server:19_libreria_mvc"/></Host>
     </Engine>
   </Service>
 </Server>

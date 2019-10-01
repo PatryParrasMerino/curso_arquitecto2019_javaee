@@ -20,30 +20,36 @@
 <%
 List<Contacto> listaContactos=(List<Contacto>)request.getAttribute("contactos");
 %>--%>
-<c:set var="listaContactos" value="${requestScope.contactos}"/>
 <div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Edad</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="contacto" items="${listaContactos}">
-      <tr>
-        <td>${contacto.idContacto}</td>
-        <td>${contacto.nombre}</td>
-        <td>${contacto.email}</td>
-        <td>${contacto.edad}</td>
-        <td><a href="Controller?op=doEliminar&id=${contacto.idContacto}">Eliminar</a></td>
-      </tr>
-    </c:forEach>
-    </tbody>
-  </table>
+<c:choose> 		<%--Este if sobra, es algo que debe controlar el controller--%>
+	<c:when test="${not empty requestScope.contactos}">
+	  <table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>ID</th>
+	        <th>Nombre</th>
+	        <th>Email</th>
+	        <th>Edad</th>
+	        <th></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <c:forEach var="contacto" items="${requestScope.contactos}">
+	      <tr>
+	        <td>${contacto.idContacto}</td>
+	        <td>${contacto.nombre}</td>
+	        <td>${contacto.email}</td>
+	        <td>${contacto.edad}</td>
+	        <td><a href="Controller?op=doEliminar&id=${contacto.idContacto}">Eliminar</a></td>
+	      </tr>
+	    </c:forEach>
+	    </tbody>
+	  </table>
+  	</c:when>
+  	<c:otherwise>
+  		<h1>Sin contactos</h1>
+  	</c:otherwise>
+</c:choose>
     <div class="col-sm-10">
 		
 		<a type="button" href='Controller?op=toEntrada' class="btn btn-default">Volver</a>
