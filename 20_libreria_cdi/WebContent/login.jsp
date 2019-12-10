@@ -8,7 +8,7 @@
 </head>
 <body>
 	<center>
-		<form action="Controller?op=doLogin" method="POST">
+		<form action="Controller?op=doLogin" method="POST"> 
 		 
 		
 			Usuario:<input type="text" name="user" /><br/>
